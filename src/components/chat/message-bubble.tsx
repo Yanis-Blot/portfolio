@@ -1,6 +1,5 @@
 import { cn } from "@/lib/utils"
-
-type Role = "user" | "assistant"
+import type { Role } from "@/lib/chat"
 
 export function MessageBubble({ children, role }: { children: string, role: Role }){
     const r = role
