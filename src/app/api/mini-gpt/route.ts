@@ -1,3 +1,5 @@
+import { createLLM } from "@/lib/llm"
+
 export async function POST(req: Request){
 
     {/*  message doit bien etre dans la request : c'est un contrat api à respecter entre back et front. */}
@@ -7,8 +9,13 @@ export async function POST(req: Request){
         return Response.json( { error: "No message sent"}, { status: 400})
     }
 
+    
+    { /* LLM response text content, using factory design pattern */ }
+    const llm = createLLM()
+    const res = await llm(message)
+
     return Response.json({
         role: "assistant",
-        content: "Template Response."
+        content: res
     })
 }
