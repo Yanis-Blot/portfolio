@@ -2,7 +2,7 @@
     - return the correct adaptater, depending on environment variable 'LLM_PROVIDER'
 */
 
-import { askOllama } from "./ollama-adapter"
+import { createOllamaAdapter } from "./ollama-adapter"
 import { askMock } from "./mock-adapter"
 import { LLMAdapter } from "./types"
 
@@ -10,7 +10,7 @@ export function createLLM(): LLMAdapter {
     const llm = process.env.LLM_PROVIDER
     switch(llm) {
         case "ollama":
-            return askOllama
+            return createOllamaAdapter(process.env.LLM_MODEL ?? "mistral")
         case "mock":
             return askMock
         default:
