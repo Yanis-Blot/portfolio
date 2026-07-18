@@ -1,12 +1,23 @@
 export const dictionary = {
   fr: {
+    nav: {
+      home: "Accueil",
+      projects: "Projets",
+      contact: "Contact",
+      menuLabel: "Ouvrir le menu",
+    },
     hero: {
-      greeting: "Bienvenue, laissez moi me présenter :",
+      greeting: "Bienvenue, laissez-moi me présenter :",
       title: "Yanis Blot--El Mazouzi - Ingénieur en Apprentissage Automatique",
-      bio: "En dernière année d'école d'ingénieur a l'IMT Mines Alès, je concoit des systèmes de machine learning et expérimente a travers de nombreux projets. ",
+      bio: "En dernière année d'école d'ingénieur à l'IMT Mines Alès, je conçois des systèmes de machine learning et j'expérimente à travers de nombreux projets.",
       contactCta: "Me contacter",
       copyEmailLabel: "Copier l'email",
       copiedLabel: "Copié !",
+    },
+    contact: {
+      heading: "Me contacter",
+      description:
+        "Une question, une opportunité ou juste envie d'échanger ? Écrivez-moi.",
     },
     video: {
       heading: "Présentation",
@@ -23,17 +34,28 @@ export const dictionary = {
       viewProject: "Voir le projet",
     },
     footer: {
-      builtWith: "yanis.com",
+      builtWith: "Conçu avec Next.js & Tailwind CSS",
     },
   },
   en: {
+    nav: {
+      home: "Home",
+      projects: "Projects",
+      contact: "Contact",
+      menuLabel: "Open menu",
+    },
     hero: {
       greeting: "Welcome, let me introduce myself:",
       title: "Yanis Blot--El Mazouzi - Machine Learning Engineer",
-      bio: "I build machine learning systems, from prototyping to production inference. This page gathers my background and personal projects. Replace this text with your real bio.",
+      bio: "Final-year engineering student at IMT Mines Alès, I design machine learning systems and experiment through many personal projects.",
       contactCta: "Contact me",
       copyEmailLabel: "Copy email",
       copiedLabel: "Copied!",
+    },
+    contact: {
+      heading: "Get in touch",
+      description:
+        "A question, an opportunity, or just want to chat? Drop me a line.",
     },
     video: {
       heading: "Introduction",
@@ -50,7 +72,7 @@ export const dictionary = {
       viewProject: "View project",
     },
     footer: {
-      builtWith: "yanis.com",
+      builtWith: "Built with Next.js & Tailwind CSS",
     },
   },
 } as const;

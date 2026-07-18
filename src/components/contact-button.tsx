@@ -7,7 +7,7 @@ import { Check, Copy, Mail } from "lucide-react";
 import { useLanguage } from "@/components/language-provider";
 import { buttonVariants } from "@/components/ui/button";
 import { dictionary } from "@/lib/i18n";
-import { cn } from "@/lib/utils";
+import { cn, copyToClipboard } from "@/lib/utils";
 
 export function ContactButton({ children }:{ children:string }) {
   const { language } = useLanguage();
@@ -15,7 +15,8 @@ export function ContactButton({ children }:{ children:string }) {
   const [copied, setCopied] = useState(false);
 
   const handleCopy = async () => {
-    await navigator.clipboard.writeText(children);
+    const ok = await copyToClipboard(children);
+    if (!ok) return;
     setCopied(true);
     setTimeout(() => setCopied(false), 1500);
   };

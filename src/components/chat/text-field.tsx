@@ -1,32 +1,35 @@
-import { Button } from "@/components/ui/button"
+"use client";
+
+import { Button } from "@/components/ui/button";
 
 type Props = {
-    value: string;
-    onChange: (v: string) => void;
-    onSubmit: () => void;
-}
+  value: string;
+  onChange: (v: string) => void;
+  onSubmit: () => void;
+  disabled?: boolean;
+};
 
-export function TextField({ value, onChange, onSubmit }: Props){
-    return(
-        <div className="w-full min-w-l">
-            <div
-                className="flex flex-row border border-white rounded-xl p-2 items-center"
-            >
-                <Button 
-                    type="submit"
-                    variant="default"
-                    onClick={onSubmit}
-                >
-                    Envoyer
-                </Button>
-                <input 
-                    className="flex ml-5 text-white outline-none placeholder:text-gray-400 w-full"
-                    value={value}
-                    onChange={ (e) => onChange(e.target.value)}
-                    placeholder="Entrez du texte..."
-                >
-                </input>
-            </div>
-        </div>
-    )
+export function TextField({ value, onChange, onSubmit, disabled = false }: Props) {
+  return (
+    <form
+      className="w-full"
+      onSubmit={(e) => {
+        e.preventDefault();
+        onSubmit();
+      }}
+    >
+      <div className="flex flex-row items-center rounded-xl border border-border p-2">
+        <Button type="submit" variant="default" disabled={disabled}>
+          Envoyer
+        </Button>
+        <input
+          className="ml-5 w-full flex-1 bg-transparent text-foreground outline-none placeholder:text-muted-foreground"
+          value={value}
+          onChange={(e) => onChange(e.target.value)}
+          placeholder="Entrez du texte..."
+          disabled={disabled}
+        />
+      </div>
+    </form>
+  );
 }

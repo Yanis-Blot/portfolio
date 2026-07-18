@@ -1,8 +1,10 @@
 "use client";
 
-import { createContext, useContext, useEffect, useState } from "react";
+import { createContext, useContext, useState } from "react";
 
-export type Language = "fr" | "en";
+import { LANGUAGE_COOKIE, type Language } from "@/lib/language";
+
+export type { Language };
 
 type LanguageContextValue = {
   language: Language;
@@ -11,21 +13,21 @@ type LanguageContextValue = {
 
 const LanguageContext = createContext<LanguageContextValue | null>(null);
 
-const STORAGE_KEY = "portfolio-language";
+const ONE_YEAR = 60 * 60 * 24 * 365;
 
-export function LanguageProvider({ children }: { children: React.ReactNode }) {
-  const [language, setLanguageState] = useState<Language>("fr");
-
-  useEffect(() => {
-    const stored = localStorage.getItem(STORAGE_KEY);
-    if (stored === "fr" || stored === "en") {
-      setLanguageState(stored);
-    }
-  }, []);
+export function LanguageProvider({
+  children,
+  initialLanguage = "fr",
+}: {
+  children: React.ReactNode;
+  initialLanguage?: Language;
+}) {
+  const [language, setLanguageState] = useState<Language>(initialLanguage);
 
   const setLanguage = (lang: Language) => {
     setLanguageState(lang);
-    localStorage.setItem(STORAGE_KEY, lang);
+    document.documentElement.lang = lang;
+    document.cookie = `${LANGUAGE_COOKIE}=${lang}; path=/; max-age=${ONE_YEAR}; SameSite=Lax`;
   };
 
   return (
@@ -33,7 +35,7 @@ export function LanguageProvider({ children }: { children: React.ReactNode }) {
       {children}
     </LanguageContext.Provider>
   );
-} 
+}
 
 export function useLanguage() {
   const ctx = useContext(LanguageContext);

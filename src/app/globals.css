@@ -48,10 +48,12 @@
   --radius-4xl: calc(var(--radius) * 2.6);
   --color-chat-user: var(--chat-user);
   --color-chat-assistant: var(--chat-assistant);
+  --color-text-user: var(--text-user);
+  --color-text-assistant: var(--text-assistant)
 }
 
 :root {
-  --background: oklch(1 0 0);
+  --background: oklch(95.845% 0.00596 42.562);
   --foreground: oklch(0.145 0 0);
   --card: oklch(1 0 0);
   --card-foreground: oklch(0.145 0 0);
@@ -83,8 +85,10 @@
   --sidebar-accent-foreground: oklch(0.205 0 0);
   --sidebar-border: oklch(0.922 0 0);
   --sidebar-ring: oklch(0.708 0 0);
-  --chat-user: oklch(28.111% 0.09103 286.009);
-  --chat-assistant: oklch(31.72% 0.07809 22.558);
+  --chat-user: oklch(100% 0.00011 271.152);
+  --text-user: oklch(0% 0 0);
+  --chat-assistant: oklch(0% 0 0);
+  --text-assistant: oklch(100% 0.00011 271.152);
 }
 
 .dark {
@@ -119,8 +123,10 @@
   --sidebar-accent-foreground: oklch(0.985 0 0);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.556 0 0);
-  --chat-user: oklch(87.029% 0.06906 291.291);
-  --chat-assistant: oklch(82.27% 0.09927 19.36);
+  --chat-user: oklch(0% 0 0);
+  --text-user: oklch(0.985 0 0);
+  --chat-assistant: oklch(100% 0.00011 271.152);
+  --text-assistant: oklch(0.145 0 0);
 }
 
 @layer base {
@@ -131,6 +137,14 @@
     @apply bg-background text-foreground;
   }
   html {
-    @apply font-sans;
+    @apply scroll-smooth font-sans;
   }
+}
+
+.scrollbar-hide {
+  scrollbar-width: none;          /* Firefox */
+  -ms-overflow-style: none;       /* Edge legacy */
+}
+.scrollbar-hide::-webkit-scrollbar {
+  display: none;                  /* Chrome, Safari, Edge moderne */
 }
