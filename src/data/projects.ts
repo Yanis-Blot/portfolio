@@ -18,15 +18,15 @@ export type Project = {
 
 export const projects: Project[] = [
   {
-    slug: "placeholder-classifier",
+    slug: "mini-gpt",
     title: "Mini-GPT",
     description: {
       fr: "Démo d'inférence d'un modèle Transformer (chatbot)",
       en: "Transformer model inference demo (chatbot)",
     },
     tags: {
-      fr: ["PyTorch", "Vision", "Inférence"],
-      en: ["PyTorch", "Vision", "Inference"],
+      fr: ["NLP", "Transformer", "Inférence"],
+      en: ["NLP", "Transformer", "Inference"],
     },
     link: {
       kind: "internal",

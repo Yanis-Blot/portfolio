@@ -5,6 +5,7 @@ import Link from "next/link";
 
 import { useLanguage } from "@/components/language-provider";
 import { buttonVariants } from "@/components/ui/button";
+import { ExternalLink } from "@/components/ui/external-link";
 import {
   Card,
   CardContent,
@@ -65,15 +66,10 @@ export function ProjectCard({ project }: { project: Project }) {
 
       {project.link.kind === "external" && (
         <CardFooter>
-          <a
-            href={project.link.url}
-            target="_blank"
-            rel="noopener noreferrer"
-            className={buttonClass}
-          >
+          <ExternalLink href={project.link.url} variant="outline" size="sm">
             {t.viewProject}
             <ArrowUpRight className="ml-1 h-4 w-4" />
-          </a>
+          </ExternalLink>
         </CardFooter>
       )}
     </Card>
